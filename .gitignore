@@ -4,3 +4,4 @@
 .terraform.lock.hcl
 credential.tf
 terraform.tfstate
+terraform.tfstate.backup
