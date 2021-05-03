@@ -1,5 +1,7 @@
 #all files listed here to ignore
 .terraform/
+ssh-key-amplify-terraform
+ssh-key-amplify-terraform.pub
 
 .terraform.lock.hcl
 credential.tf
