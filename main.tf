@@ -69,3 +69,27 @@ resource "aws_iam_role_policy" "amplify_policy" {
 
 
 
+# for create aws amplify resource with the help of cloud formation stack
+
+resource "aws_cloudformation_stack" "amplify_with_github" {
+  count = var.amplify_github_enabled ? 1 : 0
+  name  = "demoapp"
+  lifecycle {
+    ignore_changes = [parameters.OauthToken]
+  }
+  parameters = {
+    Repository                   = var.amplify_repository_url
+    OauthToken                   = var.githubaccesstocken
+    IAMServiceRole               = aws_iam_role.amplify_role.arn
+    Domain                       = var.domain_name
+    Name                         = "demoapp"
+    AmplifyBackendApiGWInvokeURL = var.amplify_backend_apigw_invoke_url
+    Subdomain                    = var.amplify_subdomain
+    AutoBranchCreationPatterns   = var.amplify_branch_patterns
+    SecretsKey                   = var.env_vars_secret_key
+    NpmToken                     = var.npm_token
+  }
+
+  #below statement is for setting template on aws 
+  template_body = file("${path.module}/amplify_github.template")
+}
