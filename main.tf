@@ -51,3 +51,20 @@ data "aws_iam_policy_document" "amplify_role_policy_document" {
 }
 
 
+
+
+# for create IAM role for amplify app  access 
+resource "aws_iam_role" "amplify_role" {
+  name               = "demoAmplifyRole"
+  assume_role_policy = data.aws_iam_policy_document.amplify_assumerole_policy_document.json
+}
+
+
+# for creating IAM role policy 
+resource "aws_iam_role_policy" "amplify_policy" {
+  name   = "amplify_policy"
+  role   = aws_iam_role.amplify_role.id
+  policy = data.aws_iam_policy_document.amplify_role_policy_document.json
+}
+
+
