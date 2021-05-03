@@ -1,0 +1,5 @@
+#all files listed here to ignore
+.terraform/
+
+.terraform.lock.hcl
+credential.tf
