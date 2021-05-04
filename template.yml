@@ -1,0 +1,37 @@
+
+Parameters:
+  Appname:
+    Description: Name of app as you want
+    Type: String
+  RepositoryPath:
+    Description: path of your git repository
+    Type: String
+  GitHubOuthTocken:
+    Description: Your Github Account Outhtocken created in developer setting option on github
+    Type: String
+  DefaultBranchName:
+    Description: Default branch name of your github account
+    Type: String
+  EnvironmentName:
+    Description: Environment name as you want
+    Type: String
+
+Resources:
+  AmplifyApp:
+    Type: AWS::Amplify::App
+    Properties:
+      Name: !Ref Appname
+      OauthToken: !Ref GitHubOuthTocken
+      Repository: !Ref RepositoryPath
+      AutoBranchCreationConfig:
+        EnableAutoBranchCreation: true
+        EnableAutoBuild: true
+        EnablePullRequestPreview: true
+        PullRequestEnvironmentName: !Ref EnvironmentName
+  AmplifyBranch:
+    Type: AWS::Amplify::Branch
+    Properties:
+      AppId: !GetAtt AmplifyApp.AppId
+      BranchName: !Ref DefaultBranchName
+      EnableAutoBuild: true
+

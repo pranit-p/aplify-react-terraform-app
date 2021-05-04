@@ -1,0 +1,9 @@
+# all ignored file here
+ssh-key-amplify-terraform
+ssh-key-amplify-terraform.pub
+credentials.tf
+terraform.tfstate
+terraform.tfstate.backup
+.terraform.lock.hcl
+.terraform/
+.idea
