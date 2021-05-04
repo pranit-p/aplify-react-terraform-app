@@ -8,7 +8,7 @@ resource "aws_cloudformation_stack" "amplify-app" {
   parameters = {
     Appname           = var.app_name
     RepositoryPath    = var.repository_path
-    GitHubOauthTocken  = var.GithubOauthToken
+    GitHubOauthTocken = var.GithubOauthToken
     DefaultBranchName = var.defaultbranchname
     EnvironmentName   = var.environment_name
   }
