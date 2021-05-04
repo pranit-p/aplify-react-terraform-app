@@ -6,7 +6,7 @@ Parameters:
   RepositoryPath:
     Description: path of your git repository
     Type: String
-  GitHubOuthTocken:
+  GitHubOauthTocken:
     Description: Your Github Account Outhtocken created in developer setting option on github
     Type: String
   DefaultBranchName:

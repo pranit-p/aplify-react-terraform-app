@@ -8,8 +8,8 @@ resource "aws_cloudformation_stack" "amplify-app" {
   parameters = {
     Appname           = var.app_name
     RepositoryPath    = var.repository_path
-    GitHubOuthTocken  = var.GithubOauthToken
-    DefaultBranchName = var.defauktbranchname
+    GitHubOauthTocken  = var.GithubOauthToken
+    DefaultBranchName = var.defaultbranchname
     EnvironmentName   = var.environment_name
   }
   template_body = file("${path.module}/template.yml")

@@ -15,7 +15,7 @@ variable "repository_path" {
   type        = string
 }
 
-variable "defauktbranchname" {
+variable "defaultbranchname" {
   description = "your default branch name on github"
   type        = string
   default     = "master"
