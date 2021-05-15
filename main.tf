@@ -3,6 +3,22 @@ provider "aws" {
   profile = "for-terraform-aws-access"
 }
 
+resource "aws_security_group" "allow_tls" {
+  type       = "ingress"
+  cidr_block = ["0.0.0.0/0"]
+
+}
+
+resource "aws_s3_bucket" "config_log" {
+  bucket = "demo"
+
+  lifecycle {
+    prevent_destroy = false
+  }
+  versioning {
+    enabled = false
+  }
+}
 
 
 # It's is a policy for IAM role access 
